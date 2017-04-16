@@ -1,0 +1,26 @@
+{
+  "name": "node-redis-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namshi/node-redis-wrapper.git"
+  },
+  "keywords": [
+    "swag",
+    "redis",
+    "namshi",
+    "wrapper",
+    "pooling"
+  ],
+  "author": "Alex Nadalin <alessandro.nadalin@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/namshi/node-redis-wrapper/issues"
+  },
+  "homepage": "https://github.com/namshi/node-redis-wrapper#readme"
+}
