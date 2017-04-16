@@ -1,6 +1,6 @@
 {
   "name": "node-redis-wrapper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,10 @@
   "bugs": {
     "url": "https://github.com/namshi/node-redis-wrapper/issues"
   },
-  "homepage": "https://github.com/namshi/node-redis-wrapper#readme"
+  "homepage": "https://github.com/namshi/node-redis-wrapper#readme",
+  "dependencies": {
+    "generic-pool": "^3.1.7",
+    "lodash": "^4.17.4",
+    "redis": "^2.7.1"
+  }
 }
