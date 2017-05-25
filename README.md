@@ -20,7 +20,7 @@ pool:
 You can then start using redis with:
 
 ``` js
-const redis = require('node-redis-wrapper')
+const redis = require('node-redis-wrapper')(config)
 
 redis.del('some-key').then(...).catch(...)
 
