@@ -28,3 +28,17 @@ redis.del('some-key').then(...).catch(...)
 
 await redis.del('some-key')
 ```
+
+## Custom constructor
+
+If you want to control how the redis client is created (eg. to use [redis-sentinel](https://www.npmjs.com/package/redis-sentinel) & the likes), you can just specify a `createClient` function in the config:
+
+``` js
+let config = {...}
+
+config.createClient = function() {
+  require('redis-sentinel').createClient(...options...)
+}
+
+const redis = require('node-redis-wrapper')(config)
+```
