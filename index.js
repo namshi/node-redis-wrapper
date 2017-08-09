@@ -1,4 +1,3 @@
-const redis = require('redis');
 const _ = require('lodash');
 const genericPool = require('generic-pool');
 
@@ -8,30 +7,36 @@ module.exports = function(config) {
       return new Promise(function(resolve, reject) {
         console.log('Creating a new redis client');
 
-        let client = redis.createClient({
-          host: config.host,
-          port: config.port,
-          retry_strategy: function(options) {
-            if (options.error && options.error.code === 'ECONNREFUSED') {
-              return new Error('The server refused the connection');
-            }
-            if (options.total_retry_time > 5000) {
-              return new Error('Retry time exhausted');
-            }
-            if (options.times_connected > 5) {
-              return undefined;
-            }
+        let client;
 
-            return 1000;
-          }
-        });
+        if (config.createClient) {
+          client = config.createClient()
+        } else {
+          client = redis.createClient({
+            host: config.host,
+            port: config.port,
+            retry_strategy: function(options) {
+              if (options.error && options.error.code === 'ECONNREFUSED') {
+                return new Error('The server refused the connection');
+              }
+              if (options.total_retry_time > 5000) {
+                return new Error('Retry time exhausted');
+              }
+              if (options.times_connected > 5) {
+                return undefined;
+              }
+
+              return 1000;
+            }
+          });
+        }
 
         client.on('connect', function() {
           resolve(client);
         });
 
         client.on('error', function(error) {
-          return reject(error);
+          reject(error);
         });
       });
     },
