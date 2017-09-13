@@ -12,7 +12,7 @@ module.exports = function(config) {
         if (config.createClient) {
           client = config.createClient()
         } else {
-          client = redis.createClient({
+          client = require('redis').createClient({
             host: config.host,
             port: config.port,
             retry_strategy: function(options) {
